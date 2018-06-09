@@ -8,6 +8,8 @@ using MijnFilms.Entities;
 
 namespace MijnFilms.Controllers
 {
+    [Route("")]
+    [Route("[Controller]")]
     public class MovieController : Controller
     {
         private MovieContext db;
@@ -17,19 +19,17 @@ namespace MijnFilms.Controllers
             db = context;
         }
 
-
-
-        // GET: Movie
-        public ActionResult Index()
+        #region List
+        [Route("")]
+        [Route("[action]")]
+        [Route("Lijst")]
+        public ViewResult List()
         {
-            return View();
-        }
 
-        // GET: Movie/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
+            return View(db.Movie.ToList());
+
         }
+        #endregion
 
 
     }
